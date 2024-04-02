@@ -18,8 +18,9 @@ public class Pago {
     private Long id;
     private Double totalPago;
     private LocalDateTime fechaPago;
-    private String metodoPago;
+    private MetodoPago metodoPago;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 }
+
