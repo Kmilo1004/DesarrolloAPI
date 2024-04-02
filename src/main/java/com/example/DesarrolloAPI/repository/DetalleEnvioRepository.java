@@ -10,6 +10,4 @@ public interface DetalleEnvioRepository extends JpaRepository<DetalleEnvio, Long
     List<DetalleEnvio> findByPedidoId(Long pedidoId);
 
     List<DetalleEnvio> findByTrasnportadora(String transportadora);
-
-    List<DetalleEnvio> findByEstado(String estado);
 }

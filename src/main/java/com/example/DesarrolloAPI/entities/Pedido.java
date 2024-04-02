@@ -18,7 +18,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private LocalDateTime fechaPedido;
-    private String status;
+    private Status status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
@@ -26,5 +26,9 @@ public class Pedido {
     @OneToMany(mappedBy = "Pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ItemPedido> itemPedido;
 
-
+    public enum Status {
+        PENDIENTE,
+        ENVIADO,
+        ENTREGADO
+    }
 }
