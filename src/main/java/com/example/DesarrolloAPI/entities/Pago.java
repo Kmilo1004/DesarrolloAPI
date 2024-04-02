@@ -22,5 +22,14 @@ public class Pago {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
+
+    public enum MetodoPago {
+            EFECTIVO,
+            TARJETA_CREDITO,
+            PAYPAL,
+            NEQUI,
+            DAVIPLATA,
+            PSE
+    }
 }
 
