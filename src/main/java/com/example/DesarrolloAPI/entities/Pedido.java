@@ -24,16 +24,16 @@ public class Pedido {
     @JoinColumn(name = "id_pedido")
     private Cliente clientes;
 
-    @OneToMany(mappedBy = "pedidos")
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itemPedidos;
 
     @OneToOne
-    @JoinColumn(name = "pagos")
-    private Pago pagos;
+    @JoinColumn(name = "id_pago")
+    private Pago pago;
 
     @OneToOne
-    @JoinColumn(name = "detalleEnvios")
-    private DetalleEnvio detalleEnvios;
+    @JoinColumn(name = "id_pedido")
+    private DetalleEnvio detalleEnvio;
 
     public enum Status {
         PENDIENTE,

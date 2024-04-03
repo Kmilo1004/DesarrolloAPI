@@ -21,8 +21,8 @@ public class Pago {
     private LocalDateTime fechaPago;
     private MetodoPago metodoPago;
 
-    @OneToOne(mappedBy = "pagos")
-    private Pedido pedidos;
+    @OneToOne(mappedBy = "pago")
+    private Pedido pedido;
 
     public enum MetodoPago {
             EFECTIVO,

@@ -18,8 +18,8 @@ public class DetalleEnvio {
     private String transportadora;
     private String numeroGuia;
     @OneToOne
-    @JoinColumn(name = "id_detalle_envio")
-    private Pedido pedidos;
+    @JoinColumn(name = "id_pedido")
+    private Pedido pedido;
 
 
 }

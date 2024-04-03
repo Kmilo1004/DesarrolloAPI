@@ -19,6 +19,7 @@ public class Cliente {
     private String nombre;
     private String email;
     private String direccion;
+
     @OneToMany(mappedBy = "clientes")
     private List<Pedido> pedidos;
 }
