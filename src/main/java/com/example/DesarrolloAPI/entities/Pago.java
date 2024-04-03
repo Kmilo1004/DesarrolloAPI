@@ -15,17 +15,14 @@ import java.time.LocalDateTime;
 @Setter
 public class Pago {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "pago_total")
     private Double totalPago;
-    @Column(name = "fecha_pago")
     private LocalDateTime fechaPago;
-    @Column(name = "metodo_pago")
     private MetodoPago metodoPago;
 
-    @OneToOne(mappedBy = "payment")
-    private Pedido order;
+    @OneToOne(mappedBy = "pago")
+    private Pedido pedido;
 
     public enum MetodoPago {
             EFECTIVO,

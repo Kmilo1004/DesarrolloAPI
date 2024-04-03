@@ -12,18 +12,17 @@ import lombok.*;
 @Setter
 public class ItemPedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Integer cantidad;
-    @Column(nullable = false)
     private Double precioUnitario;
 
     @ManyToOne
-    @JoinColumn(name = "idOrder")
-    private Pedido order;
+    @JoinColumn(name = "id_pedido")
+
+    private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "idProduct")
+    @JoinColumn(name = "id_product")
     private Product product;
 }

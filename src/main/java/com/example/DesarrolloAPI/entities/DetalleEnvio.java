@@ -12,18 +12,14 @@ import lombok.*;
 @Setter
 public class DetalleEnvio {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String direccion;
-
-    @Column(nullable = false)
     private String transportadora;
-
-    @Column(nullable = false)
     private String numeroGuia;
+    @OneToOne
+    @JoinColumn(name = "id_detalle_envio")
+    private Pedido pedido;
 
-    @OneToOne(mappedBy = "details")
-    private Pedido order;
+
 }

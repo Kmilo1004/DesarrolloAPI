@@ -10,11 +10,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 class ClienteRepositoryTest extends AbstractIntegrationDBTest {
-ClienteRepository clienteRepository;
-@Autowired
-    public ClienteRepositoryTest(ClienteRepository clienteRepository) {
+    @Autowired
+    ClienteRepository clienteRepository;
+
+    /*public ClienteRepositoryTest(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
-    }
+    }*/
     @BeforeEach
     void setUp() {
     clienteRepository.deleteAll();
@@ -33,6 +34,7 @@ ClienteRepository clienteRepository;
     List<Cliente> clienteSeach = clienteRepository.findByEmail("and@gmsil.com");
     //Then
     assertThat(clienteSeach).isNotEmpty();
+    assertThat(clienteSeach.get(0).getEmail()).isEqualTo("and@gmail.com");
     }
 
     @Test
@@ -48,19 +50,26 @@ ClienteRepository clienteRepository;
         List<Cliente> clientesd = clienteRepository.findByDireccion("calle7");
     //Then
         assertThat(clientesd).isNotEmpty();
+        assertThat(clientesd.get(0).getDireccion()).isEqualTo("Calle 7");
     }
 
     @Test
     void BuscarListaDeClientesPorNombres() {
         //Given
-        Cliente cliente2 = Cliente.builder()
-                .email("moi@gmsil.com")
-                .direccion("calle3")
-                .nombre("camilo")
+        Cliente cliente1 = Cliente.builder()
+                .email("moi@gmail.com")
+                .direccion("Calle 3")
+                .nombre("Camilo")
                 .build();
+        Cliente cliente2 = Cliente.builder()
+                .email("otro@gmail.com")
+                .direccion("calle 5")
+                .nombre("Andres")
+                .build();
+        clienteRepository.save(cliente1);
         clienteRepository.save(cliente2);
         //When
-        List<Cliente> clientesN = clienteRepository.findByNombreStartingWithIgnoreCase("camilo");
+        List<Cliente> clientesN = clienteRepository.findByNombreStartingWithIgnoreCase("Camilo");
         //Then
         assertThat(clientesN).hasSize(2);
     }
