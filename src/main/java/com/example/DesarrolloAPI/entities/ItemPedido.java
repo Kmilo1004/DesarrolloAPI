@@ -19,7 +19,6 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "id_pedido")
-
     private Pedido pedido;
 
     @ManyToOne

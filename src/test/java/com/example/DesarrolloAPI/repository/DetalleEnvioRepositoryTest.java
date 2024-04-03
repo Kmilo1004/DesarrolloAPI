@@ -12,13 +12,13 @@ import java.util.List;
 
 
 class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
-
+    @Autowired
     DetalleEnvioRepository detalleEnvioRepository;
 
-    @Autowired
-    public DetalleEnvioRepositoryTest(DetalleEnvioRepository detalleEnvioRepository) {
+
+    /*public DetalleEnvioRepositoryTest(DetalleEnvioRepository detalleEnvioRepository) {
         this.detalleEnvioRepository = detalleEnvioRepository;
-    }
+    }*/
 
     void initMockDetalles(){
 
@@ -62,7 +62,7 @@ class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
     void givenDetalleEnvio_whenBuscarLaTransportadora_thenObtienesUnaListaDeTransportadoras(){
         initMockDetalles();
 
-        List<DetalleEnvio> detalleEnvios = detalleEnvioRepository.findByTrasnportadora("envia");
+        List<DetalleEnvio> detalleEnvios = detalleEnvioRepository.findByTransportadora("envia");
 
         assertThat(detalleEnvios).isNotEmpty();
         assertThat(detalleEnvios).first().hasFieldOrPropertyWithValue("transportadora", "envia");

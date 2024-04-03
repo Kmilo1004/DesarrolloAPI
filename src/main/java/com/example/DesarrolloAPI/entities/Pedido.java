@@ -36,8 +36,6 @@ public class Pedido {
     private DetalleEnvio detalleEnvio;
 
     public enum Status {
-        PENDIENTE,
-        ENVIADO,
-        ENTREGADO
+        PENDIENTE, ENVIADO, ENTREGADO
     }
 }
