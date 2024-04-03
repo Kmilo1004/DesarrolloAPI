@@ -14,13 +14,19 @@ import java.util.List;
 @Setter
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private Double price;
+
+    @Column(nullable = false)
     private Integer stock;
 
-    @OneToMany(mappedBy = "products")
-    private List<ItemPedido> itemPedidos;
+    @OneToMany(mappedBy = "product")
+    List<ItemPedido> orderItems;
 
 }

@@ -15,25 +15,29 @@ import java.util.List;
 @Setter
 public class Pedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private LocalDateTime fechaPedido;
+
+    @Column(nullable = false)
     private Status status;
 
     @ManyToOne
-    @JoinColumn(name = "id_pedido")
-    private Cliente clientes;
+    @JoinColumn(name = "idCustomer")
+    private Cliente customer;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> itemPedidos;
-
-    @OneToOne
-    @JoinColumn(name = "id_pago")
-    private Pago pago;
+    @OneToMany(mappedBy = "order")
+    private List<ItemPedido> orderItems;
 
     @OneToOne
-    @JoinColumn(name = "id_pedido")
-    private DetalleEnvio detalleEnvio;
+    @JoinColumn(name = "idPayment")
+    private Pago payment;
+
+    @OneToOne
+    @JoinColumn(name = "idDetail")
+    private DetalleEnvio details;
 
     public enum Status {
         PENDIENTE,

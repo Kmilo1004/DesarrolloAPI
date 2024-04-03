@@ -2,17 +2,14 @@ package com.example.DesarrolloAPI.repository;
 
 import com.example.DesarrolloAPI.AbstractIntegrationDBTest;
 import com.example.DesarrolloAPI.entities.DetalleEnvio;
-import com.example.DesarrolloAPI.entities.Pedido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
 
@@ -24,8 +21,6 @@ class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
     }
 
     void initMockDetalles(){
-
-        Pedido pedido = new Pedido();
 
         DetalleEnvio detalleEnvio = DetalleEnvio.builder()
                 //.pedido(pedido)
