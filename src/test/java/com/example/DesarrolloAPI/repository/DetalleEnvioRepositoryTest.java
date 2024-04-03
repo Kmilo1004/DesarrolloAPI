@@ -28,7 +28,7 @@ class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
         Pedido pedido = new Pedido();
 
         DetalleEnvio detalleEnvio = DetalleEnvio.builder()
-                .pedido(pedido)
+                //.pedido(pedido)
                 .direccion("Calle 22")
                 .transportadora("envia")
                 .numeroGuia("1212")
@@ -36,7 +36,7 @@ class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
         detalleEnvioRepository.save(detalleEnvio);
 
         DetalleEnvio detalleEnvio2 = DetalleEnvio.builder()
-                .pedido(pedido)
+                //.pedido(pedido)
                 .direccion("Carrera 1")
                 .transportadora("Servientrega")
                 .numeroGuia("1515")
@@ -52,7 +52,7 @@ class DetalleEnvioRepositoryTest extends AbstractIntegrationDBTest {
 
     @Test
     @DisplayName("Buscas todos los detalles del envio que tenemos")
-    void shouldGetAllDetalleEnvio(){
+        void shouldGetAllDetalleEnvio(){
         //given
         initMockDetalles();
 

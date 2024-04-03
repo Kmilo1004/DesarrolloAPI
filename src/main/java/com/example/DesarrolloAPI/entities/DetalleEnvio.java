@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name= "Cliente")
+@Table(name= "detalleEnvios")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -12,13 +12,14 @@ import lombok.*;
 @Setter
 public class DetalleEnvio {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String direccion;
     private String transportadora;
     private String numeroGuia;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
+    @OneToOne
+    @JoinColumn(name = "id_detalle_envio")
+    private Pedido pedidos;
+
 
 }

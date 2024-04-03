@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name= "Pedido")
+@Table(name= "pedidos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -15,16 +15,25 @@ import java.util.List;
 @Setter
 public class Pedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime fechaPedido;
     private Status status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-    @OneToMany(mappedBy = "Pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ItemPedido> itemPedido;
+    @ManyToOne
+    @JoinColumn(name = "id_pedido")
+    private Cliente clientes;
+
+    @OneToMany(mappedBy = "pedidos")
+    private List<ItemPedido> itemPedidos;
+
+    @OneToOne
+    @JoinColumn(name = "pagos")
+    private Pago pagos;
+
+    @OneToOne
+    @JoinColumn(name = "detalleEnvios")
+    private DetalleEnvio detalleEnvios;
 
     public enum Status {
         PENDIENTE,

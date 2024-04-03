@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name= "Product")
+@Table(name= "products")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,12 +14,13 @@ import java.util.List;
 @Setter
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private Double price;
     private Integer stock;
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ItemPedido> itemPedido;
+
+    @OneToMany(mappedBy = "products")
+    private List<ItemPedido> itemPedidos;
 
 }

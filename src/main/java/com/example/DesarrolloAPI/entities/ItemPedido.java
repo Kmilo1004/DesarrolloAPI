@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name= "ItemPedido")
+@Table(name= "itemPedidos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -12,14 +12,17 @@ import lombok.*;
 @Setter
 public class ItemPedido {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer cantidad;
     private Double precioUnitario;
+
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
+    @JoinColumn(name = "id_pedido")
+
+    private Pedido pedidos;
+
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "id_product")
+    private Product products;
 }

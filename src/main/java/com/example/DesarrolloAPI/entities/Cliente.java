@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name= "Cliente")
+@Table(name= "clientes")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,11 +14,11 @@ import java.util.List;
 @Setter
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String email;
     private String direccion;
-    @OneToMany(mappedBy = "Cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Pedido> Pedido;
+    @OneToMany(mappedBy = "clientes")
+    private List<Pedido> pedidos;
 }

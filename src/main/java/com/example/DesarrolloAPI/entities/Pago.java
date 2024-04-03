@@ -3,10 +3,11 @@ package com.example.DesarrolloAPI.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.nio.MappedByteBuffer;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "Pago")
+@Table(name= "pagos")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,14 +15,14 @@ import java.time.LocalDateTime;
 @Setter
 public class Pago {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double totalPago;
     private LocalDateTime fechaPago;
     private MetodoPago metodoPago;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
+
+    @OneToOne(mappedBy = "pagos")
+    private Pedido pedidos;
 
     public enum MetodoPago {
             EFECTIVO,
