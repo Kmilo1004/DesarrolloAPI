@@ -10,7 +10,7 @@ import java.util.List;
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
     List<ItemPedido> findByPedidoId(Long pedidoId);
 
-    List<ItemPedido> findByProductoId(Long productId);
+    List<ItemPedido> findByProduct_Id(Long productId);
 
     @Query("SELECT SUM(ip.cantidad * ip.precioUnitario) FROM ItemPedido ip WHERE ip.product.id = :productId")
     Double calcularTotalVentasProducto(Long productId);

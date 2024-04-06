@@ -11,5 +11,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByStock(Integer stock);
 
-    List<Product> findByPriceMaxAndStockMax(Double maxPrice, Integer maxStock);
+    List<Product> findByPriceLessThanEqualAndStockLessThanEqual(Double maxPrice, Integer maxStock);
 }
